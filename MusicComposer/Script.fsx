@@ -1,12 +1,12 @@
 ﻿#r "System.Xml"
 #r "System.Xml.Linq"
 
-#load @"C:\Users\Alena\source\repos\MusicComposer\MusicComposer\Note.fs"
-#load @"C:\Users\Alena\source\repos\MusicComposer\MusicComposer\Measure.fs"
-#load @"C:\Users\Alena\source\repos\MusicComposer\MusicComposer\NoteFactory.fs"
-#load @"C:\Users\Alena\source\repos\MusicComposer\MusicComposer\ChordFactory.fs"
-#load @"C:\Users\Alena\source\repos\MusicComposer\MusicComposer\Scale.fs"
-#load @"C:\Users\Alena\source\repos\MusicComposer\MusicComposer\MusicXMLWriter.fs"
+#load @"D:\Development\MusicComposer\MusicComposer\Note.fs"
+#load @"D:\Development\MusicComposer\MusicComposer\Measure.fs"
+#load @"D:\Development\MusicComposer\MusicComposer\NoteFactory.fs"
+#load @"D:\Development\MusicComposer\MusicComposer\ChordFactory.fs"
+#load @"D:\Development\MusicComposer\MusicComposer\Scale.fs"
+#load @"D:\Development\MusicComposer\MusicComposer\MusicXMLWriter.fs"
 
 open MusicComposer
 

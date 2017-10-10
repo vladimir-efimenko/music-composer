@@ -5,6 +5,9 @@ module MusicXMLWriter =
     open System.Xml.Linq
     open System.Xml
 
+    // let private noteAlterInKey alter key = 
+
+
     let write (measures: Measure seq) (fileName:string) = 
         let version = 3
         let xn s = XName.op_Implicit s
