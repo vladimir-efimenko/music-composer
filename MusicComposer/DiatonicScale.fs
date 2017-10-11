@@ -1,6 +1,6 @@
 ﻿namespace MusicComposer
 
-module Scale = 
+module DiatonicScale = 
 
     let nextDiatonicPitch key pitch = 
         let nextNoteName name = ((int name) + 1) % 7 |> enum
@@ -40,33 +40,3 @@ module Scale =
     let AMinor = diatonicScale KeySignature.a (Pitch(NoteName.A, Octave.C4))
     let BMajor = diatonicScale KeySignature.B (Pitch(NoteName.B, Octave.C4))
     let BMinor = diatonicScale KeySignature.b (Pitch(NoteName.B, Octave.C4))
-
-    let CChromatic = 
-        [
-            NoteFactory.``4th`` NoteName.C Octave.C4
-            NoteFactory.``4thSharp`` NoteName.C Octave.C4
-            NoteFactory.``4th`` NoteName.D Octave.C4 
-            NoteFactory.``4thSharp`` NoteName.D Octave.C4
-            NoteFactory.``4th`` NoteName.E Octave.C4
-            NoteFactory.``4th`` NoteName.F Octave.C4
-            NoteFactory.``4thSharp`` NoteName.F Octave.C4
-            NoteFactory.``4th`` NoteName.G Octave.C4
-            NoteFactory.``4thSharp`` NoteName.G Octave.C4
-            NoteFactory.``4th`` NoteName.A Octave.C4
-            NoteFactory.``4thSharp`` NoteName.A Octave.C4
-            NoteFactory.``4th`` NoteName.B Octave.C4
-            NoteFactory.``4th`` NoteName.C Octave.C5
-
-            NoteFactory.``4th`` NoteName.B Octave.C4
-            NoteFactory.``4thFlat`` NoteName.B Octave.C4 
-            NoteFactory.``4th`` NoteName.A Octave.C4
-            NoteFactory.``4thFlat`` NoteName.A Octave.C4
-            NoteFactory.``4th`` NoteName.G Octave.C4
-            NoteFactory.``4thFlat`` NoteName.G Octave.C4
-            NoteFactory.``4th`` NoteName.F Octave.C4
-            NoteFactory.``4th`` NoteName.E Octave.C4
-            NoteFactory.``4thFlat`` NoteName.E Octave.C4
-            NoteFactory.``4th`` NoteName.D Octave.C4
-            NoteFactory.``4thFlat`` NoteName.D Octave.C4
-            NoteFactory.``4th`` NoteName.C Octave.C4
-        ]

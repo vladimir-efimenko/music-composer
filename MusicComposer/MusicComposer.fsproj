@@ -59,7 +59,8 @@
     <Compile Include="Rhythm.fs" />
     <Compile Include="NoteFactory.fs" />
     <Compile Include="ChordFactory.fs" />
-    <Compile Include="Scale.fs" />
+    <Compile Include="DiatonicScale.fs" />
+    <Compile Include="ChromaticScale.fs" />
     <Compile Include="MusicXMLWriter.fs" />
     <None Include="Script.fsx" />
   </ItemGroup>
