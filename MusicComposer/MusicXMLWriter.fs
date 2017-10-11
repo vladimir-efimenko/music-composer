@@ -5,39 +5,40 @@ module MusicXMLWriter =
     open System.Xml.Linq
     open System.Xml
 
-    // let private noteAlterInKey alter key = 
-
+    let private alterInNaturalScale (note:Note) (key:KeySignature) = 
+        Map.find key Key.keyAlters |> Seq.contains (note.Pitch.Name, note.Pitch.Alter)
 
     let write (measures: Measure seq) (fileName:string) = 
         let version = 3
         let xn s = XName.op_Implicit s
 
-        let noteXElement (note:Note) = 
-            new XElement(xn "note", 
-                (if note.Chord then XElement(xn "chord") else null),
-                new XElement(xn "pitch", 
-                    new XElement(xn "step", note.Pitch.Name),
-                    (if(note.Pitch.Alter <> NoteAlter.Natural) then
-                        new XElement(xn "alter", int note.Pitch.Alter)
-                    else 
-                        null),
-                    new XElement(xn "octave", int note.Pitch.Octave)
-                ),
-                new XElement(xn "duration", int note.Duration),
-                new XElement(xn "type", (string note.Duration).ToLower()),
-                if(note.Pitch.Alter <> NoteAlter.Natural) then 
-                    new XElement(xn "accidental", (string note.Pitch.Alter).ToLower())
-                else 
-                    null                                                        
-            )
-
-        let keyXElement (key:Key) = 
-            new XElement(xn "key", 
-                new XElement(xn "fifths", int key.Signature),
-                new XElement(xn "mode", string key.KeyType)
-            )
-        
         let measureXElement (measure:Measure) = 
+
+            let noteXElement (note:Note) = 
+                new XElement(xn "note", 
+                    (if note.Chord then XElement(xn "chord") else null),
+                    new XElement(xn "pitch", 
+                        new XElement(xn "step", note.Pitch.Name),
+                        (if(note.Pitch.Alter <> NoteAlter.Natural) then
+                            new XElement(xn "alter", int note.Pitch.Alter)
+                        else 
+                            null),
+                        new XElement(xn "octave", int note.Pitch.Octave)
+                    ),
+                    new XElement(xn "duration", int note.Duration),
+                    new XElement(xn "type", (string note.Duration).ToLower()),
+                    if not (alterInNaturalScale note measure.Key.Signature) then 
+                        new XElement(xn "accidental", (string note.Pitch.Alter).ToLower())
+                    else 
+                        null                                                        
+                )
+
+            let keyXElement (key:Key) = 
+                new XElement(xn "key", 
+                    new XElement(xn "fifths", int key.Signature),
+                    new XElement(xn "mode", string key.KeyType)
+                )
+
             new XElement(xn "measure",
                 new XElement(xn "attributes",
                     new XElement(xn "divisions", measure.DivisionsPerBeat),

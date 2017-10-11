@@ -51,6 +51,7 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Octave.fs" />
     <Compile Include="Note.fs" />
     <Content Include="packages.config" />
     <Compile Include="Key.fs" />
