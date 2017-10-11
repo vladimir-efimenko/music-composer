@@ -24,27 +24,26 @@ module DiatonicScale =
         seq {
             for _ in 0..7 do 
                 yield { Pitch = first; Duration = Duration.Quarter ; Chord = false } 
-                if firstPitch.Name = NoteName.C then printfn "%A" first
                 first <- (nextNaturalPitch key first).Value
         }
 
     // Ionian (Major scale)
-    let CMajor =  naturalScale KeySignature.C { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let DMajor = naturalScale KeySignature.D  { Name = NoteName.D; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let EMajor = naturalScale KeySignature.E  { Name = NoteName.E; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let FMajor = naturalScale KeySignature.F  { Name = NoteName.F; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let GMajor = naturalScale KeySignature.G  { Name = NoteName.G; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let AMajor = naturalScale KeySignature.A  { Name = NoteName.A; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let BMajor = naturalScale KeySignature.B  { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = Octave.C4 }
+    let CMajor = naturalScale KeySignature.C { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let DMajor = naturalScale KeySignature.D { Name = NoteName.D; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let EMajor = naturalScale KeySignature.E { Name = NoteName.E; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let FMajor = naturalScale KeySignature.F { Name = NoteName.F; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let GMajor = naturalScale KeySignature.G { Name = NoteName.G; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let AMajor = naturalScale KeySignature.A { Name = NoteName.A; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let BMajor = naturalScale KeySignature.B { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
 
     // Aeolian (Natural minor scale)
-    let CMinor = naturalScale KeySignature.c { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let DMinor = naturalScale KeySignature.d { Name = NoteName.D; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let EMinor = naturalScale KeySignature.e { Name = NoteName.E; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let FMinor = naturalScale KeySignature.f { Name = NoteName.F; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let GMinor = naturalScale KeySignature.g { Name = NoteName.G; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let AMinor = naturalScale KeySignature.a { Name = NoteName.A; Alter = NoteAlter.Natural; Octave = Octave.C4 }
-    let BMinor = naturalScale KeySignature.b { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = Octave.C4 }
+    let CMinor = naturalScale KeySignature.c { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let DMinor = naturalScale KeySignature.d { Name = NoteName.D; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let EMinor = naturalScale KeySignature.e { Name = NoteName.E; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let FMinor = naturalScale KeySignature.f { Name = NoteName.F; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let GMinor = naturalScale KeySignature.g { Name = NoteName.G; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let AMinor = naturalScale KeySignature.a { Name = NoteName.A; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
+    let BMinor = naturalScale KeySignature.b { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
 
     let tonic scale = Seq.head scale 
     let supertonic scale = scale |> Seq.skip 1 |> Seq.take 1

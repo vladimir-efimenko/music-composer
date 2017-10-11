@@ -2,13 +2,12 @@
 
 module ChordFactory =
 
-    let tonic (scale:Note seq) = 
-        let arr = scale |> Seq.toArray
+    let tonic scale = 
         [
-            Array.get arr 0
-            { Array.get arr 2 with Chord = true } 
-            { Array.get arr 4 with Chord = true }
-         ]   
+            Array.get scale 0
+            { Array.get scale 2 with Chord = true } 
+            { Array.get scale 4 with Chord = true }
+        ]   
 
     let CMajor = tonic DiatonicScale.CMajor
     let CMinor = tonic DiatonicScale.CMinor

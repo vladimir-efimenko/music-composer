@@ -11,10 +11,6 @@ and Pitch = {
             Alter : NoteAlter
             Octave : Octave
         }  
-        //with 
-        //override this.ToString() = sprintf "%s %s %s" (string this.Name) 
-        //                                           (match this.Alter with NoteAlter.Sharp -> "#" | NoteAlter.Flat -> "b" | _ -> "")
-        //                                           (string this.Octave)
 
 and NoteName = C = 0 | D = 1 | E = 2 | F = 3| G = 4 | A = 5 | B = 6
 

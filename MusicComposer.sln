@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MusicComposer", "MusicComposer\MusicComposer.fsproj", "{33294A3D-7AA8-4160-A030-71150817F0D0}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "UnitTests", "UnitTests\UnitTests.fsproj", "{1DEB5A3A-629B-4E0B-9107-614D0E8979D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{33294A3D-7AA8-4160-A030-71150817F0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33294A3D-7AA8-4160-A030-71150817F0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33294A3D-7AA8-4160-A030-71150817F0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DEB5A3A-629B-4E0B-9107-614D0E8979D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DEB5A3A-629B-4E0B-9107-614D0E8979D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DEB5A3A-629B-4E0B-9107-614D0E8979D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DEB5A3A-629B-4E0B-9107-614D0E8979D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
