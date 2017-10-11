@@ -17,6 +17,9 @@ and Pitch =
             { Name = name; Octave = octave; Alter = NoteAlter.Natural }
         new (name: NoteName, alter: NoteAlter, octave: Octave) = 
             { Name = name; Octave = octave; Alter = alter }
+        override this.ToString() = sprintf "%s %s %s" (string this.Name) 
+                                                   (match this.Alter with NoteAlter.Sharp -> "#" | NoteAlter.Flat -> "b" | _ -> "")
+                                                   (string this.Octave)
 
 and NoteName = C = 0 | D = 1 | E = 2 | F = 3| G = 4 | A = 5 | B = 6
 

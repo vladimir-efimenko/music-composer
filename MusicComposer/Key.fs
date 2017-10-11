@@ -35,7 +35,7 @@ module Key =
     let private sharpKeyAlters = [(NoteName.F, NoteAlter.Sharp); (NoteName.C, NoteAlter.Sharp); (NoteName.G, NoteAlter.Sharp); (NoteName.D, NoteAlter.Sharp);(NoteName.A, NoteAlter.Sharp); (NoteName.E, NoteAlter.Sharp); (NoteName.B, NoteAlter.Sharp)]
     let private flatKeyAlters = [(NoteName.B, NoteAlter.Flat); (NoteName.E, NoteAlter.Flat); (NoteName.A, NoteAlter.Flat); (NoteName.D, NoteAlter.Flat);(NoteName.G, NoteAlter.Flat); (NoteName.C, NoteAlter.Flat); (NoteName.F, NoteAlter.Flat)]
 
-    // Map of all possible alters and keys
+    // Map of all possible alters for the specified key signature
     let keyAlters = Map([ for k in Enum.GetValues(typeof<KeySignature>) do 
                             let key = k :?> KeySignature
                             let num = int key
