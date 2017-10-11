@@ -2,44 +2,17 @@
 
 module ChordFactory =
 
-    let CMajor = 
+    let tonic (scale:Note seq) = 
+        let arr = scale |> Seq.toArray
         [
-            Note(Pitch(name = NoteName.C, octave =  Octave.C4), Duration.Quarter) 
-            Note(Pitch(name = NoteName.E, octave =  Octave.C4), Duration.Quarter, chord = true) 
-            Note(Pitch(name = NoteName.G, octave =  Octave.C4), Duration.Quarter, chord = true)
-        ]
-    
-    let CMinor = 
-        [
-            Note(Pitch(name = NoteName.C, octave =  Octave.C4), Duration.Quarter) 
-            Note(Pitch(name = NoteName.E, alter = NoteAlter.Flat, octave =  Octave.C4), Duration.Quarter, chord = true) 
-            Note(Pitch(name = NoteName.G, octave =  Octave.C4), Duration.Quarter, chord = true) 
-        ]
+            Array.get arr 0
+            { Array.get arr 2 with Chord = true } 
+            { Array.get arr 4 with Chord = true }
+         ]   
 
-    let DMajor = 
-        [
-            Note(Pitch(name = NoteName.D, octave =  Octave.C4), Duration.Quarter) 
-            Note(Pitch(name = NoteName.F, alter = NoteAlter.Sharp, octave =  Octave.C4), Duration.Quarter, chord = true) 
-            Note(Pitch(name = NoteName.A, octave =  Octave.C4), Duration.Quarter, chord = true)
-        ]
-    
-    let DMinor = 
-        [
-            Note(Pitch(name = NoteName.D, octave =  Octave.C4), Duration.Quarter) 
-            Note(Pitch(name = NoteName.F, octave =  Octave.C4), Duration.Quarter, chord = true) 
-            Note(Pitch(name = NoteName.A, octave =  Octave.C4), Duration.Quarter, chord = true) 
-        ]
-
-    let EMajor = 
-        [
-            Note(Pitch(name = NoteName.E, octave =  Octave.C4), Duration.Quarter) 
-            Note(Pitch(name = NoteName.G, alter = NoteAlter.Sharp, octave =  Octave.C4), Duration.Quarter, chord = true) 
-            Note(Pitch(name = NoteName.B, octave =  Octave.C4), Duration.Quarter, chord = true)
-        ]
-    
-    let EMinor = 
-        [
-            Note(Pitch(name = NoteName.E, octave =  Octave.C4), Duration.Quarter) 
-            Note(Pitch(name = NoteName.G, octave =  Octave.C4), Duration.Quarter, chord = true) 
-            Note(Pitch(name = NoteName.B, octave =  Octave.C4), Duration.Quarter, chord = true) 
-        ]
+    let CMajor = tonic DiatonicScale.CMajor
+    let CMinor = tonic DiatonicScale.CMinor
+    let DMajor =  tonic DiatonicScale.DMajor
+    let DMinor = tonic DiatonicScale.DMinor
+    let EMajor = tonic DiatonicScale.EMajor
+    let EMinor = tonic DiatonicScale.EMinor

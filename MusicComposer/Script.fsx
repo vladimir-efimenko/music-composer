@@ -6,14 +6,14 @@
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\Key.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\Measure.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\NoteFactory.fs"
-#load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\ChordFactory.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\DiatonicScale.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\ChromaticScale.fs"
+#load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\ChordFactory.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\MusicXMLWriter.fs"
 
 open MusicComposer
 
-MusicXMLWriter.write ([ Measure((4,4), DiatonicScale.CMajor |> Seq.map (fun n -> Note(pitch = n.Pitch, duration = Duration.Eighth)))
+MusicXMLWriter.write ([ Measure((4,4), DiatonicScale.CMajor |> Seq.map (fun n -> { n with Duration = Duration.Eighth; Chord = false }))
                         Measure((2,4), Seq.append ChordFactory.CMinor ChordFactory.CMajor, Key.CMinor)
                         Measure((7,4), DiatonicScale.CMinor, Key.CMinor)
                         Measure((7,4), DiatonicScale.DMajor, Key.DMajor)
