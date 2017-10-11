@@ -1,8 +1,7 @@
-﻿namespace UnitTests
+﻿namespace MusicComposer
 
 module DiatonicScaleTests = 
 
-    open MusicComposer
     open NUnit.Framework
 
     let pitch = { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = Octave.C4 }
@@ -33,3 +32,17 @@ module DiatonicScaleTests =
         Assert.AreEqual({ pitch with Name = NoteName.B }, (Seq.item 5 DiatonicScale.DMajor).Pitch, "6th note should be B")
         Assert.AreEqual({ pitch with Name = NoteName.C; Alter = NoteAlter.Sharp; Octave = Octave.C5 }, (Seq.item 6 DiatonicScale.DMajor).Pitch, "7th note should be C#")
         Assert.AreEqual({ pitch with Name = NoteName.D; Octave = Octave.C5 }, (Seq.last DiatonicScale.DMajor).Pitch, "Last note should be D")
+
+    [<Test>]
+    let ``nextNaturalPitch of A in DMinor should be Bb``() = 
+        let a = { Name = NoteName.A; Alter = NoteAlter.Natural; Octave = Octave.C4 } 
+        let b = { Name = NoteName.B; Alter = NoteAlter.Flat; Octave = Octave.C4 } 
+
+        Assert.AreEqual(b, (DiatonicScale.nextNaturalPitch KeySignature.d a).Value)
+
+    [<Test>]
+    let ``nextNaturalPitch of B in DMajor should be C#``() = 
+        let b = { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = Octave.C4 } 
+        let csharp = { Name = NoteName.C; Alter = NoteAlter.Sharp; Octave = Octave.C5 } 
+
+        Assert.AreEqual(csharp, (DiatonicScale.nextNaturalPitch KeySignature.D b).Value)

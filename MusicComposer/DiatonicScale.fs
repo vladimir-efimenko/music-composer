@@ -23,7 +23,7 @@ module DiatonicScale =
         let mutable first = firstPitch
         seq {
             for _ in 0..7 do 
-                yield { Pitch = first; Duration = Duration.Quarter ; Chord = false } 
+                yield Note(pitch = first, duration = Duration.Quarter, chord = false) 
                 first <- (nextNaturalPitch key first).Value
         }
 

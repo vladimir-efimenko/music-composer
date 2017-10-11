@@ -5,7 +5,7 @@ module NoteFactory =
 
     let private randNotes = Random()
 
-    let getNote note duration octave alter = { Pitch = { Name = note; Alter = alter; Octave = octave}; Duration = duration; Chord = false }
+    let getNote note duration octave alter = Note({ Name = note; Alter = alter; Octave = octave}, duration)
 
     let ``16th`` note octave = getNote note Duration.``16th`` octave NoteAlter.Natural
 
