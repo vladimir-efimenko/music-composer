@@ -33,7 +33,7 @@ module MusicXMLWriter =
 
         let keyXElement (key:Key) = 
             new XElement(xn "key", 
-                new XElement(xn "fifths", key.AlterNumber),
+                new XElement(xn "fifths", int key.Signature),
                 new XElement(xn "mode", string key.KeyType)
             )
         

@@ -25,5 +25,4 @@ module NoteFactory =
 
     let ``4thFlat`` note octave = getNote note Duration.Quarter octave NoteAlter.Flat
 
-
     let random octave = ``16th`` (randNotes.Next(0, 7) |> enum) octave

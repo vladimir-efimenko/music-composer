@@ -10,16 +10,10 @@ type Measure =
     val Notes:Note seq
     val Key:Key
     new (time:Time, notes: Note seq) = 
-        { Time = time; Notes = notes; DivisionsPerBeat = 48; Key = Key(0, KeyType.Major) }
+        { Time = time; Notes = notes; DivisionsPerBeat = 48; Key = Key(KeySignature.C, KeyType.Major) }
     new (time:Time, divisions: int, notes: Note seq) = 
-        { Time = time; Notes = notes; DivisionsPerBeat = divisions; Key = Key(0, KeyType.Major) }
+        { Time = time; Notes = notes; DivisionsPerBeat = divisions; Key = Key(KeySignature.C, KeyType.Major) }
     new (time:Time, divisions: int, notes: Note seq, key: Key) = 
         { Time = time; Notes = notes; DivisionsPerBeat = divisions; Key = key }
     new (time:Time, notes: Note seq, key: Key) = 
         { Time = time; Notes = notes; DivisionsPerBeat = 48; Key = key }
-and Key = 
-    val AlterNumber : int
-    val KeyType: KeyType 
-    new (alterNumber:int, keyType:KeyType) = 
-        { AlterNumber = alterNumber; KeyType = keyType }
-and KeyType = Major | Minor

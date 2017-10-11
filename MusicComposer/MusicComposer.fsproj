@@ -53,6 +53,7 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Note.fs" />
     <Content Include="packages.config" />
+    <Compile Include="Key.fs" />
     <Compile Include="Measure.fs" />
     <Compile Include="Rhythm.fs" />
     <Compile Include="NoteFactory.fs" />
