@@ -28,4 +28,10 @@ and Duration =  Whole = 192 | Half = 96 | Quarter  = 48 | Eighth = 24 | ``16th``
 
 module Note = 
 
-    let nextNoteName (name:NoteName) =  enum<NoteName>((int name + 1) % 7)
+    let nextNoteName (name:NoteName) = enum<NoteName>((int name + 1) % 7)
+
+    let prevNoteName name = 
+        match name with 
+            NoteName.C -> NoteName.B
+            | NoteName.B | NoteName.A | NoteName.G | NoteName.F | NoteName.E | NoteName.D -> enum<NoteName>(int name - 1) 
+            | _ -> failwith (string name |> sprintf "Invalid note name: %s")

@@ -26,32 +26,40 @@ module ChromaticScale =
             | _ -> None
                 
 
-    let CChromatic = 
-        [
-            NoteFactory.``4th`` NoteName.C Octave.C4
-            NoteFactory.``4thSharp`` NoteName.C Octave.C4
-            NoteFactory.``4th`` NoteName.D Octave.C4 
-            NoteFactory.``4thSharp`` NoteName.D Octave.C4
-            NoteFactory.``4th`` NoteName.E Octave.C4
-            NoteFactory.``4th`` NoteName.F Octave.C4
-            NoteFactory.``4thSharp`` NoteName.F Octave.C4
-            NoteFactory.``4th`` NoteName.G Octave.C4
-            NoteFactory.``4thSharp`` NoteName.G Octave.C4
-            NoteFactory.``4th`` NoteName.A Octave.C4
-            NoteFactory.``4thSharp`` NoteName.A Octave.C4
-            NoteFactory.``4th`` NoteName.B Octave.C4
-            NoteFactory.``4th`` NoteName.C Octave.C5
+    let prevChromaticPitch pitch = 
+        match pitch with 
+            | { Name = NoteName.B; Alter = NoteAlter.Natural }
+            | { Name = NoteName.A; Alter = NoteAlter.Natural }
+            | { Name = NoteName.G; Alter = NoteAlter.Natural }
+            | { Name = NoteName.E; Alter = NoteAlter.Natural }
+            | { Name = NoteName.D; Alter = NoteAlter.Natural } ->
+                Some({ pitch with Alter = NoteAlter.Flat })
+            | { Name = NoteName.F; Alter = NoteAlter.Natural } -> 
+                Some({ pitch with Name = NoteName.E })
+            | { Name = NoteName.B; Alter = NoteAlter.Flat }
+            | { Name = NoteName.A; Alter = NoteAlter.Flat }
+            | { Name = NoteName.G; Alter = NoteAlter.Flat }
+            | { Name = NoteName.E; Alter = NoteAlter.Flat }
+            | { Name = NoteName.D; Alter = NoteAlter.Flat } ->
+                Some({ pitch with Name = Note.prevNoteName pitch.Name; Alter = NoteAlter.Natural })
+            | { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = oct } -> 
+                let prevOct = Octave.prev oct 
+                match prevOct with
+                    None -> None
+                    | Some(prev) -> Some({ Name = NoteName.B; Alter = NoteAlter.Natural; Octave = prev })
+            | _ -> None
 
-            NoteFactory.``4th`` NoteName.B Octave.C4
-            NoteFactory.``4thFlat`` NoteName.B Octave.C4 
-            NoteFactory.``4th`` NoteName.A Octave.C4
-            NoteFactory.``4thFlat`` NoteName.A Octave.C4
-            NoteFactory.``4th`` NoteName.G Octave.C4
-            NoteFactory.``4thFlat`` NoteName.G Octave.C4
-            NoteFactory.``4th`` NoteName.F Octave.C4
-            NoteFactory.``4th`` NoteName.E Octave.C4
-            NoteFactory.``4thFlat`` NoteName.E Octave.C4
-            NoteFactory.``4th`` NoteName.D Octave.C4
-            NoteFactory.``4thFlat`` NoteName.D Octave.C4
-            NoteFactory.``4th`` NoteName.C Octave.C4
-        ]
+    let CChromaticAscending = 
+        seq {
+                let mutable first = NoteFactory.c1
+                for _ in 1..13 do  
+                    yield first 
+                    first <- Note((nextChromaticPitch first.Pitch).Value)
+            }
+    let CChromaticDescending = 
+        seq { 
+                let mutable first = NoteFactory.c2
+                for _ in 1..13 do
+                    yield first 
+                    first <- Note((prevChromaticPitch first.Pitch).Value)
+            }

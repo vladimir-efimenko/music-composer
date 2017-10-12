@@ -5,6 +5,9 @@ module NoteFactory =
 
     let private randNotes = Random()
 
+    let c1 = Note({ Name = NoteName.C; Alter = NoteAlter.Natural; Octave = Octave.C4}, Duration.Quarter)
+    let c2 = Note({ Name = NoteName.C; Alter = NoteAlter.Natural; Octave = Octave.C5}, Duration.Quarter)
+
     let getNote note duration octave alter = Note({ Name = note; Alter = alter; Octave = octave}, duration)
 
     let ``16th`` note octave = getNote note Duration.``16th`` octave NoteAlter.Natural
