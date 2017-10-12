@@ -2,6 +2,34 @@
 
 module ChromaticScale = 
 
+    let nextChromaticPitch pitch = 
+        match pitch with 
+            | { Name = NoteName.C; Alter = NoteAlter.Natural }
+            | { Name = NoteName.D; Alter = NoteAlter.Natural }  
+            | { Name = NoteName.F; Alter = NoteAlter.Natural }
+            | { Name = NoteName.G; Alter = NoteAlter.Natural } 
+            | { Name = NoteName.A; Alter = NoteAlter.Natural } ->
+                { pitch with Alter = NoteAlter.Sharp }
+            | { Name = NoteName.C; Alter = NoteAlter.Sharp } -> 
+                { pitch with Name = NoteName.D; Alter = NoteAlter.Natural }
+            | { Name = NoteName.D; Alter = NoteAlter.Sharp } -> 
+                {  pitch with Name = NoteName.E; Alter = NoteAlter.Natural }
+            | { Name = NoteName.E; Alter = NoteAlter.Natural } -> 
+                { pitch with Name = NoteName.F }
+            | { Name = NoteName.F; Alter = NoteAlter.Sharp } -> 
+                { pitch with Name = NoteName.G; Alter = NoteAlter.Natural }
+            | { Name = NoteName.G; Alter = NoteAlter.Sharp } -> 
+                { pitch with Name = NoteName.A; Alter = NoteAlter.Natural }
+            | { Name = NoteName.A; Alter = NoteAlter.Sharp } -> 
+                { pitch with Name = NoteName.B; Alter = NoteAlter.Natural }
+            | { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = oct } -> 
+                let nextOct = Octave.next oct 
+                match nextOct with
+                    None -> failwith "Cannot get the next octave"
+                    | Some(next) -> { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = next }
+            | _ -> failwith "Not supported"
+                
+
     let CChromatic = 
         [
             NoteFactory.``4th`` NoteName.C Octave.C4

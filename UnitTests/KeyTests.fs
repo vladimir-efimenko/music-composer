@@ -19,6 +19,7 @@ module KeyTests =
         Assert.IsTrue(alters |> Seq.exists (fun x -> fst x = NoteName.E), "E should have flat")
         Assert.IsTrue(alters |> Seq.exists (fun x -> fst x = NoteName.A), "A should have flat")
 
+
     [<Test>]
     let ``keyAlters for BMinor has 2 sharps of F C``() =
         let alters = Map.find KeySignature.b Key.keyAlters |> Seq.filter (fun n -> snd n = NoteAlter.Sharp)

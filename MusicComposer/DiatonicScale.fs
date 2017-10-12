@@ -3,15 +3,13 @@
 module DiatonicScale = 
 
     let nextNaturalPitch key pitch = 
-        let nextNoteName name = ((int name) + 1) % 7 |> enum
-
         let nextPitch (pitch:Pitch) = 
             if pitch.Name = NoteName.B then
                 match Octave.next pitch.Octave with 
-                    Some(nextOct) -> Some( { Name= nextNoteName pitch.Name; Alter = NoteAlter.Natural; Octave =  nextOct } )
+                    Some(nextOct) -> Some( { Name= Note.nextNoteName pitch.Name; Alter = NoteAlter.Natural; Octave =  nextOct } )
                     | None -> None 
             else 
-                Some({ pitch with Name = nextNoteName pitch.Name })
+                Some({ pitch with Name = Note.nextNoteName pitch.Name })
         
         match nextPitch pitch with 
         | Some(p) -> 
