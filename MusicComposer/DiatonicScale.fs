@@ -46,9 +46,9 @@ module DiatonicScale =
     let BMinor = naturalScale KeySignature.b { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = Octave.C4 } |> Seq.toArray
 
     let tonic scale = Seq.head scale 
-    let supertonic scale = scale |> Seq.skip 1 |> Seq.take 1
-    let mediant scale = scale |> Seq.skip 2 |> Seq.take 1
-    let subdominant scale = scale |> Seq.skip 3 |> Seq.take 1
-    let dominant scale = scale |> Seq.skip 4 |> Seq.take 1
-    let submediant scale = scale |> Seq.skip 5 |> Seq.take 1
+    let supertonic scale = scale |> Seq.skip 1 |> Seq.head
+    let mediant scale = scale |> Seq.skip 2 |> Seq.head
+    let subdominant scale = scale |> Seq.skip 3 |> Seq.head
+    let dominant scale = scale |> Seq.skip 4 |> Seq.head
+    let submediant scale = scale |> Seq.skip 5 |> Seq.head
     let leadingTone scale = scale |> Seq.last

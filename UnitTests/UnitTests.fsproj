@@ -57,6 +57,7 @@
     <Content Include="packages.config" />
     <Compile Include="DiatonicScaleTests.fs" />
     <Compile Include="KeyTests.fs" />
+    <Compile Include="ChordTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
