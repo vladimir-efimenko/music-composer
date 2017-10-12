@@ -9,21 +9,21 @@ module ChromaticScale =
             | { Name = NoteName.F; Alter = NoteAlter.Natural }
             | { Name = NoteName.G; Alter = NoteAlter.Natural } 
             | { Name = NoteName.A; Alter = NoteAlter.Natural } ->
-                { pitch with Alter = NoteAlter.Sharp }
+                Some({ pitch with Alter = NoteAlter.Sharp })
             | { Name = NoteName.C; Alter = NoteAlter.Sharp }
             | { Name = NoteName.D; Alter = NoteAlter.Sharp }
             | { Name = NoteName.F; Alter = NoteAlter.Sharp } 
             | { Name = NoteName.G; Alter = NoteAlter.Sharp }
             | { Name = NoteName.A; Alter = NoteAlter.Sharp } -> 
-              { pitch with Alter = NoteAlter.Natural; Name = Note.nextNoteName pitch.Name }
+              Some({ pitch with Alter = NoteAlter.Natural; Name = Note.nextNoteName pitch.Name })
             | { Name = NoteName.E; Alter = NoteAlter.Natural } -> 
-                { pitch with Name = NoteName.F }
+                Some({ pitch with Name = NoteName.F })
             | { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = oct } -> 
                 let nextOct = Octave.next oct 
                 match nextOct with
-                    None -> failwith "Cannot get the next octave"
-                    | Some(next) -> { Name = NoteName.C; Alter = NoteAlter.Natural; Octave = next }
-            | _ -> failwith "Not supported"
+                    None -> None
+                    | Some(next) -> Some({ Name = NoteName.C; Alter = NoteAlter.Natural; Octave = next })
+            | _ -> None
                 
 
     let CChromatic = 

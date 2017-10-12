@@ -6,7 +6,7 @@ module DiatonicScale =
         let nextPitch (pitch:Pitch) = 
             if pitch.Name = NoteName.B then
                 match Octave.next pitch.Octave with 
-                    Some(nextOct) -> Some( { Name= Note.nextNoteName pitch.Name; Alter = NoteAlter.Natural; Octave =  nextOct } )
+                    Some(nextOct) -> Some( { Name= NoteName.C; Alter = NoteAlter.Natural; Octave =  nextOct } )
                     | None -> None 
             else 
                 Some({ pitch with Name = Note.nextNoteName pitch.Name })
