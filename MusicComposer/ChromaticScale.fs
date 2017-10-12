@@ -10,18 +10,14 @@ module ChromaticScale =
             | { Name = NoteName.G; Alter = NoteAlter.Natural } 
             | { Name = NoteName.A; Alter = NoteAlter.Natural } ->
                 { pitch with Alter = NoteAlter.Sharp }
-            | { Name = NoteName.C; Alter = NoteAlter.Sharp } -> 
-                { pitch with Name = NoteName.D; Alter = NoteAlter.Natural }
-            | { Name = NoteName.D; Alter = NoteAlter.Sharp } -> 
-                {  pitch with Name = NoteName.E; Alter = NoteAlter.Natural }
+            | { Name = NoteName.C; Alter = NoteAlter.Sharp }
+            | { Name = NoteName.D; Alter = NoteAlter.Sharp }
+            | { Name = NoteName.F; Alter = NoteAlter.Sharp } 
+            | { Name = NoteName.G; Alter = NoteAlter.Sharp }
+            | { Name = NoteName.A; Alter = NoteAlter.Sharp } -> 
+              { pitch with Alter = NoteAlter.Natural; Name = Note.nextNoteName pitch.Name }
             | { Name = NoteName.E; Alter = NoteAlter.Natural } -> 
                 { pitch with Name = NoteName.F }
-            | { Name = NoteName.F; Alter = NoteAlter.Sharp } -> 
-                { pitch with Name = NoteName.G; Alter = NoteAlter.Natural }
-            | { Name = NoteName.G; Alter = NoteAlter.Sharp } -> 
-                { pitch with Name = NoteName.A; Alter = NoteAlter.Natural }
-            | { Name = NoteName.A; Alter = NoteAlter.Sharp } -> 
-                { pitch with Name = NoteName.B; Alter = NoteAlter.Natural }
             | { Name = NoteName.B; Alter = NoteAlter.Natural; Octave = oct } -> 
                 let nextOct = Octave.next oct 
                 match nextOct with
