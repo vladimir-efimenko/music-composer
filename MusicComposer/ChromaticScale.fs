@@ -51,14 +51,14 @@ module ChromaticScale =
 
     let CChromaticAscending = 
         seq {
-                let mutable first = NoteFactory.c1
+                let mutable first = NoteFactory.C4
                 for _ in 1..13 do  
                     yield first 
                     first <- Note((nextChromaticPitch first.Pitch).Value)
             }
     let CChromaticDescending = 
         seq { 
-                let mutable first = NoteFactory.c2
+                let mutable first = NoteFactory.C5
                 for _ in 1..13 do
                     yield first 
                     first <- Note((prevChromaticPitch first.Pitch).Value)

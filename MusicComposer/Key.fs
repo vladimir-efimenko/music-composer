@@ -47,3 +47,6 @@ module Key =
                                             }
                             yield (key, Seq.append alters rest)
                         ])
+
+    let alterInNaturalScale (note:Note) (key:KeySignature) = 
+        Map.find key keyAlters |> Seq.contains (note.Pitch.Name, note.Pitch.Alter)

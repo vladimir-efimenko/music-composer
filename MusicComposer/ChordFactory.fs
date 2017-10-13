@@ -5,22 +5,22 @@ module ChordFactory =
     let tonic (scale: Note array) = 
         [
             Array.get scale 0
-            (Array.get scale 2).MakeChord() 
-            (Array.get scale 4).MakeChord()
+            Array.get scale 2 
+            Array.get scale 4
         ]
         
     let subdominant (scale: Note array) = 
         [
             Array.get scale 3
-            (Array.get scale 5).MakeChord() 
-            (Array.get scale 7).MakeChord()
+            Array.get scale 5
+            Array.get scale 7
         ]
 
     let dominant (scale: Note array) = 
         [
             Array.get scale 4
-            (Array.get scale 6).MakeChord() 
-            (Array.get scale 1).AddOctave().MakeChord()
+            Array.get scale 6 
+            (Array.get scale 1).AddOctave()
         ]
 
     let CMajor = tonic DiatonicScale.CMajor
