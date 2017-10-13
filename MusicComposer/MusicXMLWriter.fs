@@ -5,7 +5,7 @@ module MusicXMLWriter =
     open System.Xml.Linq
     open System.Xml
 
-    let write (measures: Measure seq) (fileName:string) = 
+    let write (fileName:string) (piece:Piece) = 
         let version = 3
         let xn s = XName.op_Implicit s
 
@@ -54,12 +54,12 @@ module MusicXMLWriter =
                     XElement(xn "score-partwise",
                         XElement(xn "part-list", 
                             XElement(xn "score-part", 
-                                XElement(xn "part-name", ""),
+                                XElement(xn "part-name", piece.Name),
                                 XAttribute(xn "id", "P1")
                             )
                         ),
                         XElement(xn "part", 
-                            seq { for m in measures -> measureXElement m },
+                            seq { for m in piece.Measures -> measureXElement m },
                              XAttribute(xn "id", "P1")
                         ),
                         XAttribute(xn "version", version)

@@ -5,6 +5,7 @@
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\Note.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\Key.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\Measure.fs"
+#load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\Piece.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\NoteFactory.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\DiatonicScale.fs"
 #load @"C:\Users\YEFVOL\Documents\musiccomposer\MusicComposer\ChromaticScale.fs"
@@ -13,21 +14,22 @@
 
 open MusicComposer
 
-MusicXMLWriter.write ([ Measure((4,4), DiatonicScale.CMajor 
-                        |> Seq.map (fun n -> Note(n.Pitch, Duration.Eighth)))
-                        Measure((2,4), Seq.append ChordFactory.CMinor ChordFactory.CMajor, Key.CMinor)
-                        Measure((7,4), DiatonicScale.CMinor, Key.CMinor)
-                        Measure((7,4), DiatonicScale.DMajor, Key.DMajor)
-                        Measure((7,4), DiatonicScale.EMajor, Key.EMajor)
-                        Measure((7,4), DiatonicScale.FMajor, Key.FMajor)
-                        Measure((7,4), DiatonicScale.GMajor, Key.GMajor)
-                        Measure((7,4), DiatonicScale.AMajor, Key.AMajor)
-                        Measure((7,4), DiatonicScale.BMajor, Key.BMajor)
-                        Measure((7,4), DiatonicScale.DMinor, Key.DMinor)
-                        Measure((7,4), DiatonicScale.EMinor, Key.EMinor)
-                        Measure((7,4), DiatonicScale.FMinor, Key.FMinor)
-                        Measure((7,4), DiatonicScale.GMinor, Key.GMinor)
-                        Measure((7,4), DiatonicScale.AMinor, Key.AMinor)
-                        Measure((7,4), DiatonicScale.BMinor, Key.BMinor)
-                        Measure((13, 4), ChromaticScale.CChromaticAscending)
-                      ]) @"C:\Users\YEFVOL\Documents\temp.xml"
+Piece("MUSICC!", ResizeArray([Measure((4,4), 
+                                    [
+                                        NoteFactory.B4.WithDuration Duration.Eighth
+                                        NoteFactory.G4.WithDuration Duration.Eighth
+                                        NoteFactory.B4.WithDuration Duration.Eighth
+                                        NoteFactory.G4.WithDuration Duration.Eighth
+                                        NoteFactory.C5.WithDuration Duration.Eighth
+                                        NoteFactory.B4.WithDuration Duration.Eighth
+                                        NoteFactory.A4.WithDuration Duration.Half
+                                        NoteFactory.D4.WithDuration Duration.Eighth
+                                        NoteFactory.D4.WithDuration Duration.Eighth
+                                        NoteFactory.D4.WithDuration Duration.Eighth
+                                        NoteFactory.D4.WithDuration Duration.Eighth
+                                        NoteFactory.G4.WithDuration Duration.Eighth
+                                        NoteFactory.G4.WithDuration Duration.Eighth
+                                        NoteFactory.G4.WithDuration Duration.Half
+                                    ], Key.GMajor)]))
+
+|> MusicXMLWriter.write @"C:\Users\YEFVOL\Documents\temp.xml" 
