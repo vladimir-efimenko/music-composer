@@ -1,6 +1,6 @@
 ﻿namespace MusicComposer
 
-
+/// Represetns a musical note
 type Note(pitch:Pitch, duration: Duration, chord:bool) = 
     member val Pitch = pitch
     member val Duration = duration

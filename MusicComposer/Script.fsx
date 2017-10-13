@@ -13,7 +13,8 @@
 
 open MusicComposer
 
-MusicXMLWriter.write ([ Measure((4,4), DiatonicScale.CMajor |> Seq.map (fun n -> { n with Duration = Duration.Eighth; Chord = false }))
+MusicXMLWriter.write ([ Measure((4,4), DiatonicScale.CMajor 
+                        |> Seq.map (fun n -> Note(n.Pitch, Duration.Eighth)))
                         Measure((2,4), Seq.append ChordFactory.CMinor ChordFactory.CMajor, Key.CMinor)
                         Measure((7,4), DiatonicScale.CMinor, Key.CMinor)
                         Measure((7,4), DiatonicScale.DMajor, Key.DMajor)
@@ -28,5 +29,6 @@ MusicXMLWriter.write ([ Measure((4,4), DiatonicScale.CMajor |> Seq.map (fun n ->
                         Measure((7,4), DiatonicScale.GMinor, Key.GMinor)
                         Measure((7,4), DiatonicScale.AMinor, Key.AMinor)
                         Measure((7,4), DiatonicScale.BMinor, Key.BMinor)
-                        Measure((13, 4), ChromaticScale.CChromatic)
+                        Measure((13, 4), ChromaticScale.CChromaticAscending)
+                        Measure((4,4), seq { for _ in 1..8 -> NoteFactory.random Octave.C4}) 
                       ]) @"C:\Users\YEFVOL\Documents\temp.xml"

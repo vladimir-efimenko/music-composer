@@ -56,6 +56,7 @@
     <Compile Include="Note.fs" />
     <Compile Include="Key.fs" />
     <Compile Include="Measure.fs" />
+    <Compile Include="Piece.fs" />
     <Compile Include="Rhythm.fs" />
     <Compile Include="NoteFactory.fs" />
     <Compile Include="DiatonicScale.fs" />
