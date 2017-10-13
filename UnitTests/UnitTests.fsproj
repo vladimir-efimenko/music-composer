@@ -59,6 +59,7 @@
     <Compile Include="ChromaticScaleTests.fs" />
     <Compile Include="KeyTests.fs" />
     <Compile Include="ChordTests.fs" />
+    <Compile Include="PieceTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

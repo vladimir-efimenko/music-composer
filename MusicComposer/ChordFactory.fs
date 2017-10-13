@@ -22,6 +22,9 @@ module ChordFactory =
             Array.get scale 6 
             (Array.get scale 1).AddOctave()
         ]
+    
+    let makeChord (notes: Note seq) = 
+        notes |> Seq.mapi (fun i note -> if i = 0 then note else note.MakeChord())
 
     let CMajor = tonic DiatonicScale.CMajor
     let CMinor = tonic DiatonicScale.CMinor

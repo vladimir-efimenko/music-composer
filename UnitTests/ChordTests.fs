@@ -7,11 +7,11 @@ module ChordTests =
     let ``Second and third notes in chord have chord flag on``() = 
         let cMaj = DiatonicScale.CMajor
 
-        let tonic = ChordFactory.tonic cMaj 
+        let tonic = ChordFactory.tonic cMaj |> ChordFactory.makeChord
 
-        Assert.IsFalse(tonic.Item(0).Chord, "First sound")
-        Assert.IsTrue(tonic.Item(1).Chord, "Second sound")
-        Assert.IsTrue(tonic.Item(2).Chord, "Third sound")
+        Assert.IsFalse((Seq.head tonic).Chord, "First sound")
+        Assert.IsTrue((Seq.tail tonic |> Seq.head).Chord, "Second sound")
+        Assert.IsTrue((Seq.last tonic).Chord, "Third sound")
 
     [<Test>]
     let ``Tonic chord is C E G for CMajor``() = 

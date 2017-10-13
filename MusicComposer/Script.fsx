@@ -30,5 +30,4 @@ MusicXMLWriter.write ([ Measure((4,4), DiatonicScale.CMajor
                         Measure((7,4), DiatonicScale.AMinor, Key.AMinor)
                         Measure((7,4), DiatonicScale.BMinor, Key.BMinor)
                         Measure((13, 4), ChromaticScale.CChromaticAscending)
-                        Measure((4,4), seq { for _ in 1..8 -> NoteFactory.random Octave.C4}) 
                       ]) @"C:\Users\YEFVOL\Documents\temp.xml"
