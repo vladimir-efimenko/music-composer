@@ -5,10 +5,6 @@ module MusicXMLWriter =
     open System.Xml.Linq
     open System.Xml
 
-    let private alterInNaturalScale (note:Note) (key:KeySignature) = 
-        Map.find key Key.keyAlters |> Seq.contains (note.Pitch.Name, note.Pitch.Alter)
-
-    /// Writes a sequence of measures in musicxml format (http://www.musicxml.com) to the specified file.
     let write (measures: Measure seq) (fileName:string) = 
         let version = 3
         let xn s = XName.op_Implicit s
@@ -28,7 +24,7 @@ module MusicXMLWriter =
                     ),
                     XElement(xn "duration", int note.Duration),
                     XElement(xn "type", (string note.Duration).ToLower()),
-                    if not (alterInNaturalScale note measure.Key.Signature) then 
+                    if not (Key.alterInNaturalScale note measure.Key.Signature) then 
                         XElement(xn "accidental", (string note.Pitch.Alter).ToLower())
                     else 
                         null                                                        

@@ -5,7 +5,7 @@ type Note(pitch:Pitch, duration: Duration, chord:bool) =
     member val Pitch = pitch
     member val Duration = duration
     member val Chord = chord
-    member this.SetDuration(duration:Duration) = 
+    member this.WithDuration(duration:Duration) = 
         Note(this.Pitch, duration, this.Chord)
     member this.MakeChord() = 
         Note(pitch, duration, true)
