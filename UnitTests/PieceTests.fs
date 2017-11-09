@@ -13,3 +13,12 @@ module PieceTests =
         Assert.AreEqual(1, piece.Measures.Count)
         Assert.AreEqual(measure, piece.Measures.Item 0)
         
+    
+    [<Test>]
+    let ``Can read XML file``() = 
+        
+        let p = MusicXMLReader.read "C:/users/yefvol/documents/temp.xml"
+
+        Assert.AreEqual("MUSICC!", p.Name)
+        Assert.IsNotNull(p.Measures, "Measures cannot be null")
+        Assert.AreEqual(2, p.Measures.Count, "Measures count")

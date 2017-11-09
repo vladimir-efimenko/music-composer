@@ -63,6 +63,7 @@
     <Compile Include="ChromaticScale.fs" />
     <Compile Include="ChordFactory.fs" />
     <Compile Include="MusicXMLWriter.fs" />
+    <Compile Include="MusicXMLReader.fs" />
     <None Include="Script.fsx" />
   </ItemGroup>
   <ItemGroup>
