@@ -27,3 +27,9 @@ module KeyTests =
         Assert.AreEqual(2, Seq.length alters, "Should be 2 sharps")
         Assert.IsTrue(alters |> Seq.exists (fun x -> fst x = NoteName.F), "B should have sharp")
         Assert.IsTrue(alters |> Seq.exists (fun x -> fst x = NoteName.C), "E should have sharp")
+
+    [<Test>]
+    let ``keyAlters for F#Major has 6 sharps``() = 
+        let alters = Map.find KeySignature.Fsharp Key.keyAlters |> Seq.filter (fun n -> snd n = NoteAlter.Sharp)
+
+        Assert.AreEqual(6, Seq.length alters, "Should be 6 sharps")

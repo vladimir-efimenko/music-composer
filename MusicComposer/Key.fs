@@ -10,7 +10,7 @@ type Key =
 
 and KeyType = Major | Minor
 
-and KeySignature = C = 0 | a = 0 | G = 1 | e = 1| D = 2 | b = 2 | A = 3 | fsharp = 3 | E = 4 | csharp = 4 | B = 5 | gsharp = 5 
+and KeySignature = C = 0 | a = 0 | G = 1 | e = 1| D = 2 | b = 2 | A = 3 | fsharp = 3 | E = 4 | csharp = 4 | B = 5 | gsharp = 5   | Fsharp = 6 
                     | F = -1 | d= -1 | Bflat = -2 | g = -2 | Eflat = -3 | c = -3 | Aflat = -4 | f = -4 | Dflat = -5 | bflat = -5 | Gflat = -6 | eflat = -6  
 
 module Key = 
