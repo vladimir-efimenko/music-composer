@@ -17,7 +17,7 @@ module PieceTests =
     [<Test>]
     let ``Can read XML file``() = 
         
-        let p = MusicXMLReader.read "C:/users/yefvol/documents/temp.xml"
+        let p = MusicXMLReader.read "temp.xml"
 
         Assert.AreEqual("MUSICC!", p.Name)
         Assert.IsNotNull(p.Measures, "Measures cannot be null")
